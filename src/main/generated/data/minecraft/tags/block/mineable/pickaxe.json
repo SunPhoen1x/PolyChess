@@ -1,0 +1,16 @@
+{
+  "values": [
+    "polychess:chess_king_white",
+    "polychess:chess_pawn_white",
+    "polychess:chess_bishop_white",
+    "polychess:chess_queen_white",
+    "polychess:chess_knight_white",
+    "polychess:chess_rook_white",
+    "polychess:chess_king_black",
+    "polychess:chess_pawn_black",
+    "polychess:chess_bishop_black",
+    "polychess:chess_queen_black",
+    "polychess:chess_knight_black",
+    "polychess:chess_rook_black"
+  ]
+}

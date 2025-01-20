@@ -1,0 +1,37 @@
+{
+	"schemaVersion": 1,
+	"id": "polychess",
+	"version": "${version}",
+	"name": "PolyChess",
+	"description": "PolyChess",
+	"authors": [
+		"Sun_Phoen1x"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/polychess/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.phoen1x.polychess.PolyChess"
+		],
+		"fabric-datagen": [
+			"com.phoen1x.polychess.PolyChessDataGenerator"
+		]
+	},
+	"mixins": [
+		"polychess.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.10",
+		"minecraft": "~1.21.1",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
