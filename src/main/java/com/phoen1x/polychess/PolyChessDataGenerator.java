@@ -2,6 +2,7 @@ package com.phoen1x.polychess;
 
 import com.phoen1x.polychess.datagen.ModBlockTagProvider;
 import com.phoen1x.polychess.datagen.ModLootTableProvider;
+import com.phoen1x.polychess.datagen.ModRecipeProvider;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 
@@ -12,5 +13,6 @@ public class PolyChessDataGenerator implements DataGeneratorEntrypoint {
 		FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
 		pack.addProvider(ModLootTableProvider::new);
 		pack.addProvider(ModBlockTagProvider::new);
+		pack.addProvider(ModRecipeProvider::new);
 	}
 }

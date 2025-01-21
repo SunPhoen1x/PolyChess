@@ -7,7 +7,7 @@ import eu.pb4.polymer.core.api.block.PolymerBlock;
 import net.minecraft.block.BlockState;
 
 public interface TransparentTripWire extends PolymerBlock, PolymerTexturedBlock {
-    BlockState TRANSPARENT_TRIPWIRE = PolymerBlockResourceUtils.requestEmpty(BlockModelType.TRIPWIRE_BLOCK);
+    BlockState TRANSPARENT_TRIPWIRE = PolymerBlockResourceUtils.requestEmpty(BlockModelType.FULL_BLOCK);
     @Override
     default BlockState getPolymerBlockState(BlockState state) {
         return TRANSPARENT_TRIPWIRE;

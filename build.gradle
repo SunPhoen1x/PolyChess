@@ -32,7 +32,6 @@ dependencies {
 	modImplementation ("eu.pb4:polymer-resource-pack:[${polymer_version}]")
 	modImplementation ("eu.pb4:polymer-virtual-entity:[${polymer_version}]")
 	modImplementation ("eu.pb4:polymer-autohost:${polymer_version}")
-	modImplementation include ("eu.pb4:sgui:[${sgui_version}]")
 	modImplementation include ("eu.pb4:factorytools:[${factorytools_version}]")
 }
 
