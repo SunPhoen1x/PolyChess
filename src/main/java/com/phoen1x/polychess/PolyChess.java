@@ -1,6 +1,10 @@
 package com.phoen1x.polychess;
 
 import com.phoen1x.polychess.block.ModBlocks;
+import com.phoen1x.polychess.block.bishop.ChessBishopBlack;
+import com.phoen1x.polychess.block.bishop.ChessBishopWhite;
+import com.phoen1x.polychess.block.kings.ChessKingBlack;
+import com.phoen1x.polychess.block.kings.ChessKingWhite;
 import com.phoen1x.polychess.block.knights.ChessKnightBlack;
 import com.phoen1x.polychess.block.knights.ChessKnightWhite;
 import com.phoen1x.polychess.entity.ModEntities;
@@ -31,6 +35,10 @@ public class PolyChess implements ModInitializer {
 	public void initModels(){
 		ChessKnightWhite.Model.MODEL.isEmpty();
 		ChessKnightBlack.Model.MODEL.isEmpty();
+		ChessKingWhite.Model.MODEL.isEmpty();
+		ChessKingBlack.Model.MODEL.isEmpty();
+		ChessBishopWhite.Model.MODEL.isEmpty();
+		ChessBishopBlack.Model.MODEL.isEmpty();
 	}
 
 	public static Identifier id(String path) {

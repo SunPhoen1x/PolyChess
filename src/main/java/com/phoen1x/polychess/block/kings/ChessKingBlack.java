@@ -1,8 +1,8 @@
-package com.phoen1x.polychess.block.knights;
+package com.phoen1x.polychess.block.kings;
 
 import com.mojang.serialization.MapCodec;
 import com.phoen1x.polychess.PolyChess;
-import com.phoen1x.polychess.entity.ChessKnightBlackBlockEntity;
+import com.phoen1x.polychess.entity.ChessKingBlackBlockEntity;
 import com.phoen1x.polychess.utils.TransparentBlocks.TransparentTripWire;
 import eu.pb4.factorytools.api.block.FactoryBlock;
 import eu.pb4.factorytools.api.resourcepack.BaseItemProvider;
@@ -27,19 +27,19 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import org.joml.Vector3f;
 
-public class ChessKnightBlack extends BlockWithEntity implements TransparentTripWire, FactoryBlock, BlockEntityProvider {
+public class ChessKingBlack extends BlockWithEntity implements TransparentTripWire, FactoryBlock, BlockEntityProvider {
     public static final BooleanProperty LIT;
     public static final DirectionProperty FACING;
-    public static final MapCodec<ChessKnightBlack> CODEC;
+    public static final MapCodec<ChessKingBlack> CODEC;
     private Model model;
 
     static {
         FACING = Properties.HORIZONTAL_FACING;
         LIT = Properties.LIT;
-        CODEC = createCodec(ChessKnightBlack::new);
+        CODEC = createCodec(ChessKingBlack::new);
     }
 
-    public ChessKnightBlack(Settings settings) {
+    public ChessKingBlack(Settings settings) {
         super(settings.nonOpaque());
         this.setDefaultState(getDefaultState().with(LIT, false));
     }
@@ -53,9 +53,9 @@ public class ChessKnightBlack extends BlockWithEntity implements TransparentTrip
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         World world = ctx.getWorld();
-        BlockState knightState = world.getBlockState(ctx.getBlockPos().down());
-        if (knightState.contains(LIT)) {
-            return this.getDefaultState().with(LIT, knightState.get(LIT)).with(FACING, ctx.getHorizontalPlayerFacing());
+        BlockState kingState = world.getBlockState(ctx.getBlockPos().down());
+        if (kingState.contains(LIT)) {
+            return this.getDefaultState().with(LIT, kingState.get(LIT)).with(FACING, ctx.getHorizontalPlayerFacing());
         }
         return this.getDefaultState().with(LIT, false).with(FACING, ctx.getHorizontalPlayerFacing());
     }
@@ -73,7 +73,7 @@ public class ChessKnightBlack extends BlockWithEntity implements TransparentTrip
     @Nullable
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new ChessKnightBlackBlockEntity(pos, state);
+        return new ChessKingBlackBlockEntity(pos, state);
     }
 
     @Override
@@ -101,8 +101,8 @@ public class ChessKnightBlack extends BlockWithEntity implements TransparentTrip
     }
 
     public static final class Model extends BlockModel {
-        public static final ItemStack MODEL = BaseItemProvider.requestModel(Identifier.of(PolyChess.MOD_ID, "block/chess_knight_black"));
-        public ItemDisplayElement knight;
+        public static final ItemStack MODEL = BaseItemProvider.requestModel(Identifier.of(PolyChess.MOD_ID, "block/chess_king_black"));
+        public ItemDisplayElement king;
         public ServerWorld world;
         public BlockPos pos;
 
@@ -114,11 +114,11 @@ public class ChessKnightBlack extends BlockWithEntity implements TransparentTrip
         }
 
         public void init(BlockState state) {
-            this.knight = ItemDisplayElementUtil.createSimple(MODEL);
-            this.knight.setScale(new Vector3f(0.5f));
-            this.knight.setTranslation(new Vector3f(0, 0, -0.5f));
-            this.knight.setPitch(-90f);
-            this.addElement(knight);
+            this.king = ItemDisplayElementUtil.createSimple(MODEL);
+            this.king.setScale(new Vector3f(0.5f));
+            this.king.setTranslation(new Vector3f(0, 0, -0.5f));
+            this.king.setPitch(-90f);
+            this.addElement(king);
             this.updateStatePos(state);
         }
 
@@ -126,7 +126,7 @@ public class ChessKnightBlack extends BlockWithEntity implements TransparentTrip
             var direction = state.get(FACING);
             var yaw = direction.asRotation();
 
-            this.knight.setYaw(yaw-90f);
+            this.king.setYaw(yaw);
         }
     }
 }

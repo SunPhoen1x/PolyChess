@@ -52,16 +52,16 @@ public class ChessKnightWhite extends BlockWithEntity implements TransparentTrip
 
     @Override
     public BlockState getPolymerBreakEventBlockState(BlockState state, ServerPlayerEntity player) {
-        return Blocks.WHITE_CONCRETE_POWDER.getDefaultState();
+        return Blocks.WHITE_CONCRETE.getDefaultState();
     }
 
     @Nullable
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         World world = ctx.getWorld();
-        BlockState rackState = world.getBlockState(ctx.getBlockPos().down());
-        if (rackState.contains(LIT)) {
-            return this.getDefaultState().with(LIT, rackState.get(LIT)).with(FACING, ctx.getHorizontalPlayerFacing());
+        BlockState knightState = world.getBlockState(ctx.getBlockPos().down());
+        if (knightState.contains(LIT)) {
+            return this.getDefaultState().with(LIT, knightState.get(LIT)).with(FACING, ctx.getHorizontalPlayerFacing());
         }
         return this.getDefaultState().with(LIT, false).with(FACING, ctx.getHorizontalPlayerFacing());
     }

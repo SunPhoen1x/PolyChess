@@ -3,7 +3,7 @@
 	"id": "polychess",
 	"version": "${version}",
 	"name": "PolyChess",
-	"description": "PolyChess",
+	"description": "PolyChess is a Polymer-based Fabric-side mod server that lets you play server-side chess with friends.",
 	"authors": [
 		"Sun_Phoen1x"
 	],
@@ -26,7 +26,7 @@
 		"polychess.mixins.json"
 	],
 	"depends": {
-		"fabricloader": ">=0.16.10",
+		"fabricloader": ">=0.16.9",
 		"minecraft": "~1.21.1",
 		"java": ">=21",
 		"fabric-api": "*"
