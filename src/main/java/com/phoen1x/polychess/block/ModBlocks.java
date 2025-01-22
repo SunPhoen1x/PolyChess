@@ -58,18 +58,18 @@ public class ModBlocks {
 
         builder.entries((displayContext, entries) -> {
             entries.add(CHESS_KING_WHITE);
-            entries.add(CHESS_PAWN_WHITE);
             entries.add(CHESS_QUEEN_WHITE);
-            entries.add(CHESS_ROOK_WHITE);
             entries.add(CHESS_BISHOP_WHITE);
             entries.add(CHESS_KNIGHT_WHITE);
+            entries.add(CHESS_ROOK_WHITE);
+            entries.add(CHESS_PAWN_WHITE);
 
             entries.add(CHESS_KING_BLACK);
-            entries.add(CHESS_PAWN_BLACK);
             entries.add(CHESS_QUEEN_BLACK);
-            entries.add(CHESS_ROOK_BLACK);
             entries.add(CHESS_BISHOP_BLACK);
             entries.add(CHESS_KNIGHT_BLACK);
+            entries.add(CHESS_ROOK_BLACK);
+            entries.add(CHESS_PAWN_BLACK);
         });
         ItemGroup polymerGroup = builder.build();
         PolymerItemGroupUtils.registerPolymerItemGroup(Identifier.of(MOD_ID, "blocks"), polymerGroup);
