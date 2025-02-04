@@ -1,8 +1,6 @@
 package com.phoen1x.polychess;
 
-import com.phoen1x.polychess.datagen.ModBlockTagProvider;
-import com.phoen1x.polychess.datagen.ModLootTableProvider;
-import com.phoen1x.polychess.datagen.ModRecipeProvider;
+import com.phoen1x.polychess.datagen.*;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 

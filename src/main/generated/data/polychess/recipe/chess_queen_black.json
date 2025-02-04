@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "S": {
+      "item": "minecraft:black_concrete"
+    }
+  },
+  "pattern": [
+    "I I",
+    " S ",
+    "SSS"
+  ],
+  "result": {
+    "count": 1,
+    "id": "polychess:chess_queen_black"
+  }
+}

@@ -28,20 +28,17 @@ import org.jetbrains.annotations.Nullable;
 import org.joml.Vector3f;
 
 public class ChessKingBlack extends BlockWithEntity implements TransparentTripWire, FactoryBlock, BlockEntityProvider {
-    public static final BooleanProperty LIT;
     public static final DirectionProperty FACING;
     public static final MapCodec<ChessKingBlack> CODEC;
     private Model model;
 
     static {
         FACING = Properties.HORIZONTAL_FACING;
-        LIT = Properties.LIT;
         CODEC = createCodec(ChessKingBlack::new);
     }
 
     public ChessKingBlack(Settings settings) {
         super(settings.nonOpaque());
-        this.setDefaultState(getDefaultState().with(LIT, false));
     }
 
     @Override
@@ -52,12 +49,7 @@ public class ChessKingBlack extends BlockWithEntity implements TransparentTripWi
     @Nullable
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        World world = ctx.getWorld();
-        BlockState kingState = world.getBlockState(ctx.getBlockPos().down());
-        if (kingState.contains(LIT)) {
-            return this.getDefaultState().with(LIT, kingState.get(LIT)).with(FACING, ctx.getHorizontalPlayerFacing());
-        }
-        return this.getDefaultState().with(LIT, false).with(FACING, ctx.getHorizontalPlayerFacing());
+        return this.getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing());
     }
 
     @Override
@@ -84,7 +76,7 @@ public class ChessKingBlack extends BlockWithEntity implements TransparentTripWi
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(FACING, LIT);
+        builder.add(FACING);
         super.appendProperties(builder);
     }
 

@@ -19,13 +19,15 @@ import org.joml.Vector3f;
 
 import static com.phoen1x.polychess.PolyChess.id;
 
-public class PolyChessBlockWhite extends LeavesBlock implements BarrierBasedWaterloggable, FactoryBlock {
+public class PolyChessBlock extends LeavesBlock implements BarrierBasedWaterloggable, FactoryBlock {
 
     protected ItemStack CHESS_MODEL;
+    private final boolean isWhite;
 
-    public PolyChessBlockWhite(Settings settings, String path) {
+    public PolyChessBlock(Settings settings, String path, boolean isWhite) {
         super(settings);
-        CHESS_MODEL = BaseItemProvider.requestModel(id("block/"+path));
+        this.isWhite = isWhite;
+        CHESS_MODEL = BaseItemProvider.requestModel(id("block/" + path));
         this.setDefaultState(this.stateManager.getDefaultState().with(Properties.PERSISTENT, false));
     }
 
@@ -36,7 +38,7 @@ public class PolyChessBlockWhite extends LeavesBlock implements BarrierBasedWate
 
     @Override
     public BlockState getPolymerBreakEventBlockState(BlockState state, ServerPlayerEntity player) {
-        return Blocks.WHITE_CONCRETE.getDefaultState();
+        return isWhite ? Blocks.WHITE_CONCRETE.getDefaultState() : Blocks.BLACK_CONCRETE.getDefaultState();
     }
 
     @Override
@@ -46,10 +48,12 @@ public class PolyChessBlockWhite extends LeavesBlock implements BarrierBasedWate
 
     public final class Model extends BlockModel {
         public ItemDisplayElement main;
-        public Model(BlockState state){
+
+        public Model(BlockState state) {
             init(state);
         }
-        public void init(BlockState state){
+
+        public void init(BlockState state) {
             this.main = ItemDisplayElementUtil.createSimple(CHESS_MODEL);
             this.main.setScale(new Vector3f(0.5f));
             this.main.setTranslation(new Vector3f(0, 0, -0.5f));
@@ -57,13 +61,15 @@ public class PolyChessBlockWhite extends LeavesBlock implements BarrierBasedWate
             this.main.setYaw(90f);
             this.addElement(main);
         }
+
         private void updateItem(BlockState state) {
             this.removeElement(this.main);
             init(state);
         }
+
         @Override
         public void notifyUpdate(HolderAttachment.UpdateType updateType) {
-            if (updateType == BlockBoundAttachment.BLOCK_STATE_UPDATE){
+            if (updateType == BlockBoundAttachment.BLOCK_STATE_UPDATE) {
                 updateItem(this.blockState());
             }
             super.notifyUpdate(updateType);

@@ -28,20 +28,17 @@ import org.jetbrains.annotations.Nullable;
 import org.joml.Vector3f;
 
 public class ChessBishopWhite extends BlockWithEntity implements TransparentTripWire, FactoryBlock, BlockEntityProvider {
-    public static final BooleanProperty LIT;
     public static final DirectionProperty FACING;
     public static final MapCodec<ChessBishopWhite> CODEC;
     private Model model;
 
     static {
         FACING = Properties.HORIZONTAL_FACING;
-        LIT = Properties.LIT;
         CODEC = createCodec(ChessBishopWhite::new);
     }
 
     public ChessBishopWhite(Settings settings) {
         super(settings.nonOpaque());
-        this.setDefaultState(getDefaultState().with(LIT, false));
     }
 
     @Override
@@ -52,12 +49,7 @@ public class ChessBishopWhite extends BlockWithEntity implements TransparentTrip
     @Nullable
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        World world = ctx.getWorld();
-        BlockState bishopState = world.getBlockState(ctx.getBlockPos().down());
-        if (bishopState.contains(LIT)) {
-            return this.getDefaultState().with(LIT, bishopState.get(LIT)).with(FACING, ctx.getHorizontalPlayerFacing());
-        }
-        return this.getDefaultState().with(LIT, false).with(FACING, ctx.getHorizontalPlayerFacing());
+        return this.getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing());
     }
 
     @Override
@@ -84,7 +76,7 @@ public class ChessBishopWhite extends BlockWithEntity implements TransparentTrip
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(FACING, LIT);
+        builder.add(FACING);
         super.appendProperties(builder);
     }
 

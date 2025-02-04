@@ -23,17 +23,17 @@ import net.minecraft.util.Rarity;
 import static com.phoen1x.polychess.PolyChess.MOD_ID;
 
 public class ModBlocks {
-    public static final Block CHESS_PAWN_WHITE = registerBlock("chess_pawn_white", new PolyChessBlockWhite(Block.Settings.copy(Blocks.WHITE_CONCRETE), "chess_pawn_white"));
+    public static final Block CHESS_PAWN_WHITE = registerBlock("chess_pawn_white", new PolyChessBlock(Block.Settings.copy(Blocks.WHITE_CONCRETE), "chess_pawn_white", true));
     public static final Block CHESS_KING_WHITE = registerBlock("chess_king_white", new ChessKingWhite(Block.Settings.copy(Blocks.WHITE_CONCRETE)));
-    public static final Block CHESS_QUEEN_WHITE = registerBlock("chess_queen_white", new PolyChessBlockWhite(Block.Settings.copy(Blocks.WHITE_CONCRETE), "chess_queen_white"));
-    public static final Block CHESS_ROOK_WHITE = registerBlock("chess_rook_white", new PolyChessBlockWhite(Block.Settings.copy(Blocks.WHITE_CONCRETE), "chess_rook_white"));
+    public static final Block CHESS_QUEEN_WHITE = registerBlock("chess_queen_white", new PolyChessBlock(Block.Settings.copy(Blocks.WHITE_CONCRETE), "chess_queen_white", true));
+    public static final Block CHESS_ROOK_WHITE = registerBlock("chess_rook_white", new PolyChessBlock(Block.Settings.copy(Blocks.WHITE_CONCRETE), "chess_rook_white", true));
     public static final Block CHESS_BISHOP_WHITE = registerBlock("chess_bishop_white", new ChessBishopWhite(Block.Settings.copy(Blocks.WHITE_CONCRETE)));
     public static final Block CHESS_KNIGHT_WHITE = registerBlock("chess_knight_white", new ChessKnightWhite(Block.Settings.copy(Blocks.WHITE_CONCRETE)));
 
-    public static final Block CHESS_PAWN_BLACK = registerBlock("chess_pawn_black", new PolyChessBlockBlack(Block.Settings.copy(Blocks.BLACK_CONCRETE), "chess_pawn_black"));
+    public static final Block CHESS_PAWN_BLACK = registerBlock("chess_pawn_black", new PolyChessBlock(Block.Settings.copy(Blocks.BLACK_CONCRETE), "chess_pawn_black", false));
     public static final Block CHESS_KING_BLACK = registerBlock("chess_king_black", new ChessKingBlack(Block.Settings.copy(Blocks.BLACK_CONCRETE)));
-    public static final Block CHESS_QUEEN_BLACK = registerBlock("chess_queen_black", new PolyChessBlockBlack(Block.Settings.copy(Blocks.BLACK_CONCRETE), "chess_queen_black"));
-    public static final Block CHESS_ROOK_BLACK = registerBlock("chess_rook_black", new PolyChessBlockBlack(Block.Settings.copy(Blocks.BLACK_CONCRETE), "chess_rook_black"));
+    public static final Block CHESS_QUEEN_BLACK = registerBlock("chess_queen_black", new PolyChessBlock(Block.Settings.copy(Blocks.BLACK_CONCRETE), "chess_queen_black", false));
+    public static final Block CHESS_ROOK_BLACK = registerBlock("chess_rook_black", new PolyChessBlock(Block.Settings.copy(Blocks.BLACK_CONCRETE), "chess_rook_black", false));
     public static final Block CHESS_BISHOP_BLACK = registerBlock("chess_bishop_black", new ChessBishopBlack(Block.Settings.copy(Blocks.BLACK_CONCRETE)));
     public static final Block CHESS_KNIGHT_BLACK = registerBlock("chess_knight_black", new ChessKnightBlack(Block.Settings.copy(Blocks.BLACK_CONCRETE)));
 

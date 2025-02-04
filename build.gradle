@@ -33,6 +33,9 @@ dependencies {
 	modImplementation ("eu.pb4:polymer-virtual-entity:[${polymer_version}]")
 	modImplementation ("eu.pb4:polymer-autohost:${polymer_version}")
 	modImplementation include ("eu.pb4:factorytools:[${factorytools_version}]")
+
+	compileOnly 'org.projectlombok:lombok:1.18.34'
+	annotationProcessor 'org.projectlombok:lombok:1.18.34'
 }
 
 processResources {
