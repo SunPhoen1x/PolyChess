@@ -12,58 +12,43 @@ import eu.pb4.polymer.virtualentity.api.ElementHolder;
 import eu.pb4.polymer.virtualentity.api.elements.ItemDisplayElement;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.SidedInventory;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
-import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
-import net.minecraft.util.ActionResult;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.ItemScatterer;
-import net.minecraft.util.collection.DefaultedList;
-import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldAccess;
 import org.jetbrains.annotations.Nullable;
 import org.joml.Vector3f;
 
 public class ChessKnightWhite extends BlockWithEntity implements TransparentTripWire, FactoryBlock, BlockEntityProvider {
-    public static final BooleanProperty LIT;
     public static final DirectionProperty FACING;
     public static final MapCodec<ChessKnightWhite> CODEC;
     private Model model;
 
     static {
         FACING = Properties.HORIZONTAL_FACING;
-        LIT = Properties.LIT;
         CODEC = createCodec(ChessKnightWhite::new);
     }
 
     public ChessKnightWhite(Settings settings) {
         super(settings.nonOpaque());
-        this.setDefaultState(getDefaultState().with(LIT, false));
     }
 
     @Override
     public BlockState getPolymerBreakEventBlockState(BlockState state, ServerPlayerEntity player) {
-        return Blocks.WHITE_CONCRETE_POWDER.getDefaultState();
+        return Blocks.WHITE_CONCRETE.getDefaultState();
     }
 
     @Nullable
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        World world = ctx.getWorld();
-        BlockState rackState = world.getBlockState(ctx.getBlockPos().down());
-        if (rackState.contains(LIT)) {
-            return this.getDefaultState().with(LIT, rackState.get(LIT)).with(FACING, ctx.getHorizontalPlayerFacing());
-        }
-        return this.getDefaultState().with(LIT, false).with(FACING, ctx.getHorizontalPlayerFacing());
+        return this.getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing());
     }
 
     @Override
@@ -90,7 +75,7 @@ public class ChessKnightWhite extends BlockWithEntity implements TransparentTrip
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(FACING, LIT);
+        builder.add(FACING);
         super.appendProperties(builder);
     }
 
@@ -112,7 +97,6 @@ public class ChessKnightWhite extends BlockWithEntity implements TransparentTrip
         public ServerWorld world;
         public BlockPos pos;
 
-
         public Model(BlockState state, ServerWorld world, BlockPos pos) {
             this.world = world;
             this.pos = pos;
@@ -131,7 +115,6 @@ public class ChessKnightWhite extends BlockWithEntity implements TransparentTrip
         private void updateStatePos(BlockState state) {
             var direction = state.get(FACING);
             var yaw = direction.asRotation();
-
             this.knight.setYaw(yaw-90f);
         }
     }

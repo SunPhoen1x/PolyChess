@@ -5,13 +5,13 @@
   "block.polychess.chess_pawn_white": "Білий пішак",
   "block.polychess.chess_rook_white": "Біла тура",
   "block.polychess.chess_queen_white": "Біла королева",
-  "block.polychess.chess_bishop_white": "Білий слон",
+  "block.polychess.chess_bishop_white": "Білий ферзь",
   "block.polychess.chess_knight_white": "Білий кінь",
 
   "block.polychess.chess_king_black": "Чорний король",
   "block.polychess.chess_pawn_black": "Чорний пішак",
   "block.polychess.chess_rook_black": "Чорна тура",
   "block.polychess.chess_queen_black": "Чорна королева",
-  "block.polychess.chess_bishop_black": "Чорний слон",
+  "block.polychess.chess_bishop_black": "Чорний ферзь",
   "block.polychess.chess_knight_black": "Чорний кінь"
 }
