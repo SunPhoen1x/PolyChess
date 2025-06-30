@@ -1,0 +1,17 @@
+{
+  "item-group.polychess.blocks": "PolyChess",
+
+  "block.polychess.chess_king_white": "Biały król",
+  "block.polychess.chess_pawn_white": "Biały pionek",
+  "block.polychess.chess_rook_white": "Biała wieża",
+  "block.polychess.chess_queen_white": "Biała królowa",
+  "block.polychess.chess_bishop_white": "Biały goniec",
+  "block.polychess.chess_knight_white": "Biały skoczek",
+
+  "block.polychess.chess_king_black": "Czarny król",
+  "block.polychess.chess_pawn_black": "Czarny pionek",
+  "block.polychess.chess_rook_black": "Czarna wieża",
+  "block.polychess.chess_queen_black": "Czarna królowa",
+  "block.polychess.chess_bishop_black": "Czarny goniec",
+  "block.polychess.chess_knight_black": "Czarny skoczek"
+}

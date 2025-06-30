@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "S": {
+      "item": "minecraft:white_concrete"
+    }
+  },
+  "pattern": [
+    " G ",
+    " S ",
+    "SSS"
+  ],
+  "result": {
+    "count": 1,
+    "id": "polychess:chess_king_white"
+  }
+}
