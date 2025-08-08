@@ -3,33 +3,30 @@
 	"id": "polychess",
 	"version": "${version}",
 	"name": "PolyChess",
-	"description": "PolyChess is a Polymer-based Fabric-side mod server that lets you play server-side chess with friends.",
+	"description": "Play chess with friends on a server with PolyChess.",
 	"authors": [
 		"Sun_Phoen1x"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://discord.gg/czfFedprM4",
+		"sources": "https://github.com/SunPhoen1x/PolyChess"
 	},
-	"license": "CC0-1.0",
-	"icon": "assets/polychess/icon.png",
+	"license": "MIT",
+	"icon": "assets/polychess/logo.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
 			"com.phoen1x.polychess.PolyChess"
-		],
-		"fabric-datagen": [
-			"com.phoen1x.polychess.PolyChessDataGenerator"
 		]
 	},
-	"mixins": [
-		"polychess.mixins.json"
-	],
 	"depends": {
-		"fabricloader": ">=0.16.9",
-		"minecraft": "~1.21.1",
+		"fabricloader": ">=0.16.14",
+		"minecraft": ">=1.21.6",
 		"java": ">=21",
-		"fabric-api": "*"
+		"fabric-api": "*",
+		"polymer-core": ">=0.13.3",
+		"polymer-resource-pack": ">=0.13.3",
+		"polymer-virtual-entity": ">=0.13.3"
 	},
 	"suggests": {
 		"another-mod": "*"

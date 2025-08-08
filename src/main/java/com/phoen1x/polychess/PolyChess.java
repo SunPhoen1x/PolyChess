@@ -1,44 +1,26 @@
 package com.phoen1x.polychess;
 
-import com.phoen1x.polychess.block.*;
-import com.phoen1x.polychess.block.knights.*;
-import com.phoen1x.polychess.block.kings.*;
-import com.phoen1x.polychess.block.bishop.*;
-import com.phoen1x.polychess.entity.*;
-import com.phoen1x.polychess.utils.*;
+import com.phoen1x.polychess.registry.PolyChessPieces;
 import eu.pb4.polymer.resourcepack.api.PolymerResourcePackUtils;
+import eu.pb4.polymer.resourcepack.extras.api.ResourcePackExtras;
 import net.fabricmc.api.ModInitializer;
-
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class PolyChess implements ModInitializer {
-	public static final String MOD_ID = "polychess";
+	public static final String MOD_ID = FabricLoader.getInstance().getModContainer("polychess").orElseThrow(() -> new RuntimeException("Mod ID not found!")).getMetadata().getId();
+	public static final String MOD_VERSION = FabricLoader.getInstance().getModContainer(MOD_ID).orElseThrow(() -> new RuntimeException("Mod version not found!")).getMetadata().getVersion().getFriendlyString();
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
 	@Override
 	public void onInitialize() {
-		ModBlocks.registerBlocks();
-		ModEntities.register();
-		ModifyLootTables.modifyLootTables();
-
-		initModels();
-		if (PolymerResourcePackUtils.addModAssets(MOD_ID)) {
-			LOGGER.info("Success PolyChess added mod assets for " + MOD_ID);
-		} else {
-			LOGGER.error("Failed to add PolyChess assets for " + MOD_ID);
-		}
+		PolyChessPieces.registerBlocks();
+		PolymerResourcePackUtils.addModAssets(MOD_ID);
+		ResourcePackExtras.forDefault().addBridgedModelsFolder(id("block"));
+		LOGGER.info("Successfully added mod assets for {} {}", MOD_ID, MOD_VERSION);
 		PolymerResourcePackUtils.markAsRequired();
-	}
-
-	public void initModels(){
-		ChessKnightWhite.Model.MODEL.isEmpty();
-		ChessKnightBlack.Model.MODEL.isEmpty();
-		ChessKingWhite.Model.MODEL.isEmpty();
-		ChessKingBlack.Model.MODEL.isEmpty();
-		ChessBishopWhite.Model.MODEL.isEmpty();
-		ChessBishopBlack.Model.MODEL.isEmpty();
 	}
 
 	public static Identifier id(String path) {
