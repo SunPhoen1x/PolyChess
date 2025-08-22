@@ -13,5 +13,8 @@
   "block.polychess.chess_rook_black": "Black Rock",
   "block.polychess.chess_queen_black": "Black Queen",
   "block.polychess.chess_bishop_black": "Black Bishop",
-  "block.polychess.chess_knight_black": "Black Knight"
+  "block.polychess.chess_knight_black": "Black Knight",
+
+  "polychess.advancement.root": "PolyChess",
+  "polychess.advancement.root.desc": "Get the first chess piece"
 }

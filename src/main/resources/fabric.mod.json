@@ -17,7 +17,10 @@
 	"entrypoints": {
 		"main": [
 			"com.phoen1x.polychess.PolyChess"
-		]
+		],
+        "fabric-datagen": [
+          "com.phoen1x.polychess.BorukvaFoodExoticDataGenerator"
+        ]
 	},
 	"depends": {
 		"fabricloader": ">=0.16.14",

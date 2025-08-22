@@ -1,0 +1,50 @@
+{
+  "display": {
+    "announce_to_chat": false,
+    "background": "polychess:gui/chess_board",
+    "description": {
+      "translate": "polychess.advancement.root.desc",
+      "color": "gold",
+      "italic": true
+    },
+    "icon": {
+      "count": 1,
+      "id": "polychess:chess_king_white"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "polychess.advancement.root"
+    }
+  },
+  "criteria": {
+    "craft_chess_piece": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "polychess:chess_pawn_white",
+              "polychess:chess_king_white",
+              "polychess:chess_queen_white",
+              "polychess:chess_rook_white",
+              "polychess:chess_bishop_white",
+              "polychess:chess_knight_white",
+              "polychess:chess_pawn_black",
+              "polychess:chess_king_black",
+              "polychess:chess_queen_black",
+              "polychess:chess_rook_black",
+              "polychess:chess_bishop_black",
+              "polychess:chess_knight_black"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "craft_chess_piece"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

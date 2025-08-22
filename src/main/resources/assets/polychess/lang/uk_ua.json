@@ -13,5 +13,7 @@
   "block.polychess.chess_rook_black": "Чорна тура",
   "block.polychess.chess_queen_black": "Чорна королева",
   "block.polychess.chess_bishop_black": "Чорний ферзь",
-  "block.polychess.chess_knight_black": "Чорний кінь"
+  "block.polychess.chess_knight_black": "Чорний кінь",
+
+  "polychess.advancement.root.desc": "Отримай шахову фігуру"
 }
