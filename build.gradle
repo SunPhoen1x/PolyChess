@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version "${loom_version}"
+    id 'net.fabricmc.fabric-loom-remap' version "${loom_version}"
 	id 'maven-publish'
 }
 
@@ -12,11 +12,14 @@ base {
 
 repositories {
 	maven { url 'https://maven.nucleoid.xyz' }
+    maven {
+        url = "https://repo.codemc.io/repository/relativitymc/"
+    }
 }
 
 dependencies {
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
-	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+    mappings "org.relativitymc:modern-yarn:${project.yarn_mappings}:v2"
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 	modImplementation ("eu.pb4:polymer-core:[${polymer_version}]")
@@ -26,6 +29,11 @@ dependencies {
 	modImplementation ("eu.pb4:polymer-virtual-entity:[${polymer_version}]")
 	modImplementation ("eu.pb4:polymer-autohost:${polymer_version}")
 	modImplementation include ("eu.pb4:factorytools:[${factorytools_version}]")
+}
+
+loom {
+    useIntermediateMappings = true
+    intermediaryUrl = 'https://repo.codemc.io/repository/relativitymc/org/relativitymc/intermediary/%1$s/intermediary-%1$s-v2.jar'
 }
 
 processResources {

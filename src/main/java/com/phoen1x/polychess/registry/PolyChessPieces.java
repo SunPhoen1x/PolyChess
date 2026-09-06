@@ -3,7 +3,6 @@ package com.phoen1x.polychess.registry;
 import com.phoen1x.polychess.PolyChess;
 import com.phoen1x.polychess.block.PolyChessBlock;
 import com.phoen1x.polychess.block.TexturedPolyBlockItem;
-import eu.pb4.polymer.core.api.item.PolymerItemGroupUtils;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -22,6 +21,8 @@ import net.minecraft.util.Rarity;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
+
+import eu.pb4.polymer.core.api.item.PolymerCreativeModeTabUtils;
 
 public class PolyChessPieces {
 
@@ -42,7 +43,7 @@ public class PolyChessPieces {
                 String name = "chess_" + piece + "_" + color;
 
                 AbstractBlock.Settings baseSettings = Block.Settings.copy(
-                        color.equals("white") ? Blocks.WHITE_WOOL : Blocks.BLACK_WOOL
+                        color.equals("white") ? Blocks.WOOLS.white() : Blocks.WOOLS.black()
                 );
 
                 Block block = registerBlock(name, settings -> new PolyChessBlock(settings, name), baseSettings);
@@ -54,17 +55,17 @@ public class PolyChessPieces {
             }
         }
 
-        ItemGroup.Builder builder = PolymerItemGroupUtils.builder();
-        builder.icon(() -> new ItemStack(ALL_ITEMS.get(0)));
-        builder.displayName(Text.translatable("item-group.polychess.blocks"));
-        builder.entries((displayContext, entries) ->
-                ALL_BLOCKS.forEach(block -> entries.add(new ItemStack(block)))
-        );
+        ItemGroup polymerGroup = ItemGroup.create(ItemGroup.Row.BOTTOM, -1)
+                .icon(() -> new ItemStack(ALL_ITEMS.get(0)))
+                .displayName(Text.translatable("item-group.polychess.blocks"))
+                .entries((displayContext, entries) ->
+                        ALL_BLOCKS.forEach(entries::add)
+                )
+                .build();
 
-
-        ItemGroup polymerGroup = builder.build();
-        PolymerItemGroupUtils.registerPolymerItemGroup(
-                Identifier.of(PolyChess.MOD_ID, "blocks"), polymerGroup
+        PolymerCreativeModeTabUtils.registerPolymerCreativeModeTab(
+                Identifier.of(PolyChess.MOD_ID, "blocks"),
+                polymerGroup
         );
     }
 
